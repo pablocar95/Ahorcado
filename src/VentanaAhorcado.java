@@ -12,16 +12,39 @@ import javax.swing.JButton;
  */
 public class VentanaAhorcado extends javax.swing.JFrame {
 
-    
-    
+    //palabraOculta en el futuro la pondré con un random
+    String palabraOculta = "CETYS";
 
+    // contador para el numero de fallos
+    int numeroFallos = 0;
+    
+    
     public VentanaAhorcado() {
         initComponents();
     }
 
+    //este método recibe la letra que aparece
+    // en el botón que ha sido pulsado
+    private void chequeaLetra(String letra){
+        //guardo el texto de la pantalla en un string auxiliar
+        String palabraConGuiones = jLabel1.getText();
+        //paso la letra a mayuscula
+        letra = letra.toUpperCase();
+        
+        if (palabraOculta.contains(letra)){ //la letra está en la palabra oculta
+            //desocultar la letra en la pantalla
+            // quitar el guion bajo
+        }
+        else { //la letra NO está en la palabra oculta
+            numeroFallos++;
+            jLabel2.setText(String.valueOf(numeroFallos));
+        }
+    }
+    
+    //recibe el botón que ha sido pulsado 
     private void chequeaBoton(JButton botonPulsado){
         botonPulsado.setVisible(false);
-        
+        chequeaLetra(botonPulsado.getText());
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,6 +84,7 @@ public class VentanaAhorcado extends javax.swing.JFrame {
         jButton26 = new javax.swing.JButton();
         jButton27 = new javax.swing.JButton();
         jButton28 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -299,6 +323,9 @@ public class VentanaAhorcado extends javax.swing.JFrame {
         });
         getContentPane().add(jButton28, new org.netbeans.lib.awtextra.AbsoluteConstraints(286, 431, 40, 40));
 
+        jLabel2.setText("0");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 30, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -474,6 +501,7 @@ public class VentanaAhorcado extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
